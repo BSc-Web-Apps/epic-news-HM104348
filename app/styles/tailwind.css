@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-	:root {
-		.element {
-			background-color: red; }
+	:root { 
+		
 		/* --font-sans: here if you have one */
 		/* --font-mono: here if you got it... */
 
@@ -80,3 +79,4 @@
 		--ring: 217.2 32.6% 60%;
 	}
 }
+	
