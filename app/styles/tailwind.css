@@ -4,6 +4,8 @@
 
 @layer base {
 	:root {
+		.element {
+			background-color: red; }
 		/* --font-sans: here if you have one */
 		/* --font-mono: here if you got it... */
 
