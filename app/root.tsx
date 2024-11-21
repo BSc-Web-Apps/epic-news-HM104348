@@ -39,16 +39,13 @@ export default function App() {
 										Keep up to date with the latest tech news.
 									</p>
 								</div>
+
 								<Button asChild variant="default" size="lg">
 									<Link to="/signup">Sign up</Link>
 								</Button>
 							</div>
 						</HeroCallToAction>
 
-						<p className="text-base text-pink-500 md:text-lg lg:text-xl">
-							Welcome to Epic News, where the latest developments in tech are
-							found.
-						</p>
 						<button className="... bg-indigo-500 px-8 py-4 hover:bg-blue-400">
 							Learn More
 						</button>
