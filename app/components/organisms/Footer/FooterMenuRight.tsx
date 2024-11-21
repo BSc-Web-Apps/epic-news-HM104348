@@ -9,25 +9,23 @@ const FooterMenuRight = ({
 	altText = 'Our company logo',
 }: FooterProps) => {
 	return (
-		<footer className="bg-secondary lg:py-16 dark:bg-dark-secondary">
-			<div className="container items-center justify-between border-b border-muted-foreground/75 py-8 lg:flex dark:border-dark-muted-foreground/75">
+		<footer className="dark:bg-dark-secondary bg-secondary lg:py-16">
+			<div className="dark:border-dark-muted-foreground/75 container items-center justify-between border-b border-muted-foreground/75 py-8 lg:flex">
 				<Link to="/" className="flex w-20 items-center justify-center lg:w-24">
-				<div className="flex items-center gap-4">
-					
-				</div>
-					<img src={logo} alt={altText} />
+					<div className="flex items-center gap-8"></div>
+					<img src={logo} alt="Epic News Logo" className="w-16" />
 				</Link>
 
 				<div className="lg:flex">
-					<div className="flex items-start gap-6 py-8 font-bold text-secondary-foreground lg:mr-24 dark:text-dark-secondary-foreground">
+					<div className="dark:text-dark-secondary-foreground flex items-start gap-6 py-8 font-bold text-secondary-foreground lg:mr-24">
 						<div>
-							<NavLink to="#">Nav Label</NavLink>
+							<NavLink to="/news">News</NavLink>
 						</div>
 						<div>
-							<NavLink to="#">Nav Label</NavLink>
+							<NavLink to="/about">About</NavLink>
 						</div>
 						<div>
-							<NavLink to="#">Nav Label</NavLink>
+							<NavLink to="/contact">Contact</NavLink>
 						</div>
 					</div>
 
@@ -47,7 +45,7 @@ const FooterMenuRight = ({
 			</div>
 
 			<div className="container flex items-center justify-between py-8">
-				<div className="text-xs text-muted-foreground/75 dark:text-dark-muted-foreground/75">
+				<div className="dark:text-dark-muted-foreground/75 text-xs text-muted-foreground/75">
 					&copy; {companyName} | {new Date().getFullYear()}
 				</div>
 				<div className="flex w-20 items-center justify-center lg:w-24">
