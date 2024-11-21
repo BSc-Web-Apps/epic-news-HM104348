@@ -1,14 +1,16 @@
 import { type LinksFunction } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
+import heroImage from '~/assets/jpg/sample-hero.jpg'
 import Document from '~/components/shared-layout/Document'
 import ThemeSwitch from '~/components/shared-layout/ThemeSwitch'
 import { useNonce } from '~/utils/nonce-provider.ts'
 import rootLinkElements from '~/utils/providers/rootLinkElements'
 import { type loader } from './__root.server'
+import { Button } from './components/atoms/Button.tsx'
 import FooterMenuRight from './components/organisms/Footer/FooterMenuRight'
 import HeaderWithSearch from './components/organisms/HeaderWithSearch'
+import HeroCallToAction from './components/organisms/Hero/HeroCallToAction.tsx'
 import useTheme from './hooks/useTheme.tsx'
-
 export const links: LinksFunction = () => {
 	return rootLinkElements
 }
@@ -24,8 +26,25 @@ export default function App() {
 			<div className="flex h-screen flex-col justify-between">
 				<HeaderWithSearch />
 				<div className="flex-1">
-					<main className="grid h-full place-items-center">
-						<h1 className="text-mega text-pink-500">Your Journey Begins!</h1>
+					<main className="h-full">
+						<HeroCallToAction
+							image={heroImage}
+							imageRight={true}
+							hasBackgroundColour={true}
+						>
+							<div className="flex h-full flex-1 flex-col justify-between p-16">
+								<div className="flex flex-col gap-8">
+									<h2 className="text-h2">Welcome to Epic News</h2>
+									<p className="text-lg">
+										Keep up to date with the latest tech news.
+									</p>
+								</div>
+								<Button asChild variant="default" size="lg">
+									<Link to="/signup">Sign up</Link>
+								</Button>
+							</div>
+						</HeroCallToAction>
+
 						<p className="text-base text-pink-500 md:text-lg lg:text-xl">
 							Welcome to Epic News, where the latest developments in tech are
 							found.
