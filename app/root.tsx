@@ -42,7 +42,6 @@ export default function App() {
         </div>
 		
        		 <FooterMenuRight />
-			 <FooterLogoCentre/>
 			</div>
 		</Document>
 	)
