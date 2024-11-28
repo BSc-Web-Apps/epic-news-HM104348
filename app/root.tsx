@@ -1,5 +1,6 @@
 import { type LinksFunction } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
+import { ParallaxProvider } from 'react-scroll-parallax'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
 import Document from '~/components/shared-layout/Document'
 import ThemeSwitch from '~/components/shared-layout/ThemeSwitch'
@@ -22,42 +23,44 @@ export default function App() {
 	const nonce = useNonce()
 	const theme = useTheme()
 	return (
-		<Document nonce={nonce} theme={theme}>
-			<div className="flex h-screen flex-col justify-between">
-				<HeaderWithSearch />
-				<div className="flex-1">
-					<main className="h-full">
-						<HeroCallToAction
-							image={heroImage}
-							imageRight={true}
-							hasBackgroundColour={true}
-						>
-							<div className="flex h-full flex-1 flex-col justify-between p-16">
-								<div className="flex flex-col gap-8">
-									<h2 className="text-h2">Welcome to Epic News</h2>
-									<p className="text-lg">
-										Keep up to date with the latest tech news.
-									</p>
+		<ParallaxProvider>
+			<Document nonce={nonce} theme={theme}>
+				<div className="flex h-screen flex-col justify-between">
+					<HeaderWithSearch />
+					<div className="flex-1">
+						<main className="h-full">
+							<HeroCallToAction
+								image={heroImage}
+								imageRight={true}
+								hasBackgroundColour={true}
+							>
+								<div className="flex h-full flex-1 flex-col justify-between p-16">
+									<div className="flex flex-col gap-8">
+										<h2 className="text-h2">Welcome to Epic News</h2>
+										<p className="text-lg">
+											Keep up to date with the latest tech news.
+										</p>
+									</div>
+
+									<Button asChild variant="default" size="lg">
+										<Link to="/signup">Sign up</Link>
+									</Button>
 								</div>
+							</HeroCallToAction>
 
-								<Button asChild variant="default" size="lg">
-									<Link to="/signup">Sign up</Link>
-								</Button>
-							</div>
-						</HeroCallToAction>
+							<button className="... bg-indigo-500 px-8 py-4 hover:bg-blue-400">
+								Learn More
+							</button>
+						</main>
+					</div>
 
-						<button className="... bg-indigo-500 px-8 py-4 hover:bg-blue-400">
-							Learn More
-						</button>
-					</main>
+					<div className="container flex justify-between pb-5">
+						<ThemeSwitch userPreference={data.requestInfo.userPrefs.theme} />
+					</div>
+
+					<FooterMenuRight />
 				</div>
-
-				<div className="container flex justify-between pb-5">
-					<ThemeSwitch userPreference={data.requestInfo.userPrefs.theme} />
-				</div>
-
-				<FooterMenuRight />
-			</div>
-		</Document>
+			</Document>
+		</ParallaxProvider>
 	)
 }
