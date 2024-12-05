@@ -28,6 +28,12 @@ export default function HeaderWithSearch() {
 					>
 						About us
 					</Link>
+					<Link
+						to="/contact-us"
+						className="text-sm font-semibold text-muted-foreground transition hover:text-foreground"
+					>
+						Contact Us
+					</Link>
 				</div>
 				<div className="ml-auto hidden max-w-sm flex-1 sm:block">
 					{searchBar}

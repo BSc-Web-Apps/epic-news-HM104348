@@ -74,6 +74,7 @@ export default function App() {
 								Learn More
 							</button>
 						</main> */}
+
 						<Outlet />
 					</div>
 
