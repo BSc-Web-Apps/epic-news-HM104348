@@ -132,6 +132,8 @@ export function ArticleEditor({
 						<div className="pb-8">
 							<Label>Category</Label>
 							<SelectorGroup
+								name="categoryId"
+								initialValue={article?.category?.id ?? ''}
 								options={categories.map(category => ({
 									value: category.id,
 									label: category.name,
