@@ -21,20 +21,27 @@ const WireframeBlock = () => {
 export default function NewsCategoryPage() {
 	const { categoryTitle } = useLoaderData<typeof loader>()
 	return (
-		<div className="container py-16">
-			<h2 className="text-h2">{categoryTitle}</h2>
-			<div className="grid grid-cols-5 gap-6">
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
+		<>
+			<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1.0"
+			></meta>
+
+			<div className="container py-16">
+				<h2 className="text-h2">{categoryTitle}</h2>
+				<div className="grid grid-cols-5 gap-6 ">
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+					<WireframeBlock />
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
