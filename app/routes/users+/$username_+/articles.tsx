@@ -1,11 +1,11 @@
 import { invariantResponse } from '@epic-web/invariant'
 import { json, type LoaderFunctionArgs } from '@remix-run/node'
 import { Link, NavLink, Outlet, useLoaderData } from '@remix-run/react'
-import { GeneralErrorBoundary } from '~/components/ErrorBoundary.js'
 import { Icon } from '~/components/ui/icon.tsx'
 import { prisma } from '~/utils/db.server.ts'
 import { cn, getUserImgSrc } from '~/utils/misc.tsx'
 import { useOptionalUser } from '~/utils/user.ts'
+import { GeneralErrorBoundary } from '~/components/ErrorBoundary.js'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const owner = await prisma.user.findFirst({
@@ -32,7 +32,7 @@ export default function ArticlesRoute() {
 	const navLinkDefaultClassName =
 		'line-clamp-2 block rounded-l-full py-2 pl-8 pr-6 text-base lg:text-xl'
 	return (
-		<main className="container flex h-full min-h-[400px] px-0 pb-12 md:px-8">
+		<main className="container flex h-full min-h-[750px] px-0 pb-12 md:px-8">
 			<div className="grid w-full grid-cols-4 bg-muted pl-2 md:container md:rounded-3xl md:pr-0">
 				<div className="relative col-span-1">
 					<div className="absolute inset-0 flex flex-col">
