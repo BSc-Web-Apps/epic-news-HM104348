@@ -1,6 +1,8 @@
 import { type LinksFunction } from '@remix-run/node'
 import { Outlet, useLoaderData } from '@remix-run/react'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import { AuthenticityTokenProvider } from 'remix-utils/csrf/react'
+import { HoneypotProvider } from 'remix-utils/honeypot/react'
 import Document from '~/components/shared-layout/Document'
 import ThemeSwitch from '~/components/shared-layout/ThemeSwitch'
 import { useNonce } from '~/utils/nonce-provider.ts'
@@ -18,22 +20,29 @@ export default function App() {
 	const data = useLoaderData<typeof loader>()
 	const nonce = useNonce()
 	const theme = useTheme()
+
 	return (
 		<ParallaxProvider>
-			<Document nonce={nonce} theme={theme}>
-				<div className="flex h-screen flex-col justify-between">
-					<HeaderWithSearch />
-					<div className="flex-1">
-						<Outlet />
-					</div>
+			<AuthenticityTokenProvider token={data.csrfToken}>
+				<HoneypotProvider {...data.honeyProps}>
+					<Document nonce={nonce} theme={theme}>
+						<div className="flex h-screen flex-col justify-between">
+							<HeaderWithSearch />
+							<div className="flex-1">
+								<Outlet />
+							</div>
 
-					<div className="container flex justify-between pb-5">
-						<ThemeSwitch userPreference={data.requestInfo.userPrefs.theme} />
-					</div>
+							<div className="container flex justify-between pb-5">
+								<ThemeSwitch
+									userPreference={data.requestInfo.userPrefs.theme}
+								/>
+							</div>
 
-					<FooterMenuRight />
-				</div>
-			</Document>
+							<FooterMenuRight />
+						</div>
+					</Document>
+				</HoneypotProvider>
+			</AuthenticityTokenProvider>
 		</ParallaxProvider>
 	)
 }
