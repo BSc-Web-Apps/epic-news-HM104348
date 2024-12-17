@@ -10,7 +10,12 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 	const categoryTitle = toTitleCase(category)
 
-	const allArticles = await prisma.article.findMany({
+	const filteredArticles = await prisma.article.findMany({
+		where: {
+			category: {
+				slug: category,
+			},
+		},
 		select: {
 			id: true,
 			title: true,
@@ -18,11 +23,11 @@ export async function loader({ params }: LoaderFunctionArgs) {
 			images: { select: { id: true } },
 		},
 	})
-	return json({ categoryTitle, allArticles })
+	return json({ categoryTitle, filteredArticles })
 }
 
 export default function NewsCategoryPage() {
-	const { categoryTitle, allArticles } = useLoaderData<typeof loader>()
+	const { categoryTitle, filteredArticles } = useLoaderData<typeof loader>()
 	return (
 		<>
 			<meta
@@ -33,10 +38,11 @@ export default function NewsCategoryPage() {
 			<div className="container py-16">
 				<h2 className="pb-6 text-h2">{categoryTitle}</h2>
 				<div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 ">
-					{allArticles.map(article => (
+					{filteredArticles.map(article => (
 						<div
-							className="line-clamp-6 flex h-40 flex-col justify-between rounded-lg bg-green-600 p-4 transition hover:scale-105
-							hover:bg-green-900"
+							className="display: flex; flex-direction: flex-col; line-clamp-6 flex h-40 flex-col justify-between rounded-lg
+							bg-green-600 p-4 transition
+								hover:scale-105 hover:bg-green-900"
 							key={article.id}
 						>
 							<h3>{article.title}</h3>
