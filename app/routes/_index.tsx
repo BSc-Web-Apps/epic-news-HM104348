@@ -1,12 +1,25 @@
 import { type MetaFunction } from '@remix-run/node'
-import { Link } from '@remix-run/react'
+import { json, Link } from '@remix-run/react'
 import HeroCallToAction from '#app/components/organisms/Hero/HeroCallToAction.tsx'
 import ParallaxBackground from '#app/components/organisms/Hero/ParallaxBackground.tsx'
 import { Button } from '#app/components/ui/button.tsx'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
 import logo from '~/assets/svg/logo.svg'
+import { prisma } from '~/utils/db.server.ts'
 
 export const meta: MetaFunction = () => [{ title: 'Epic News' }]
+export async function loader() {
+	const allArticles = await prisma.article.findMany({
+		select: {
+			id: true,
+			title: true,
+			category: { select: { name: true } },
+			images: { select: { id: true } },
+		},
+	})
+
+	return json({ allArticles })
+}
 
 export default function Index() {
 	return (
