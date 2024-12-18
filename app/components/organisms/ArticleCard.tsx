@@ -30,6 +30,8 @@ export default function ArticleCard(article: {
 				{' '}
 				<p>Artical Card</p>
 				<h1>News For You</h1>
+				<h3>{article.title}</h3>
+				<p>{article.category?.name || 'General News'}</p>
 			</div>
 		</div>
 	)
