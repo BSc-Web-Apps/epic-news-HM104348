@@ -1,5 +1,5 @@
 import { type MetaFunction } from '@remix-run/node'
-import { json, Link } from '@remix-run/react'
+import { json, Link, useLoaderData } from '@remix-run/react'
 import HeroCallToAction from '#app/components/organisms/Hero/HeroCallToAction.tsx'
 import ParallaxBackground from '#app/components/organisms/Hero/ParallaxBackground.tsx'
 import { Button } from '#app/components/ui/button.tsx'
@@ -24,6 +24,7 @@ export async function loader() {
 }
 
 export default function Index() {
+	const { allArticles } = useLoaderData<typeof loader>()
 	return (
 		<main className="h-full">
 			<HeroCallToAction
