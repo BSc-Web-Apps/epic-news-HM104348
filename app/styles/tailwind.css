@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-	:root {
+	:root { 
+		
 		/* --font-sans: here if you have one */
 		/* --font-mono: here if you got it... */
 
@@ -78,3 +79,4 @@
 		--ring: 217.2 32.6% 60%;
 	}
 }
+	
