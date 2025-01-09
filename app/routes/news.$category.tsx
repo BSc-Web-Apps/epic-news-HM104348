@@ -1,9 +1,9 @@
 import { invariant } from '@epic-web/invariant'
 import { type LoaderFunctionArgs, json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
+import ArticleCard from '#app/components/organisms/ArticleCard.tsx'
 import { prisma } from '#app/utils/db.server.ts'
 import { toTitleCase } from '#app/utils/stringUtils.ts'
-import ArticleCard from '#app/components/organisms/ArticleCard.tsx'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { category } = params
@@ -43,6 +43,7 @@ export default function NewsCategoryPage() {
 					{filteredArticles.map(article => (
 						<ArticleCard
 							key={article.id}
+							articleId={article.id}
 							id={article.id}
 							title={article.title}
 							category={article.category}
