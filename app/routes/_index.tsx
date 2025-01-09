@@ -16,7 +16,6 @@ export async function loader() {
 			id: true,
 			title: true,
 			category: { select: { name: true } },
-			images: { select: { id: true } },
 		},
 	})
 
@@ -75,9 +74,9 @@ export default function Index() {
 						allArticles.map(article => (
 							<ArticleCard
 								key={article.id}
+								id={article.id}
 								title={article.title}
-								category={article.category?.name}
-								imageId={article.images[0]?.id}
+								category={article.category}
 							/>
 						))
 					) : (

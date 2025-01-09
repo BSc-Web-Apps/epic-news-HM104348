@@ -26,7 +26,7 @@ export default function NewsPage() {
 						Entertainment
 					</NavLink>
 					<NavLink
-						to="Business"
+						to="business"
 						prefetch="intent"
 						className={({ isActive }) =>
 							`${isActive ? 'text-blue-300 underline underline-offset-8' : 'text-blue-500'}`

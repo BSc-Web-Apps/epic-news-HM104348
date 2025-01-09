@@ -3,6 +3,7 @@ import { type LoaderFunctionArgs, json } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { prisma } from '#app/utils/db.server.ts'
 import { toTitleCase } from '#app/utils/stringUtils.ts'
+import ArticleCard from '#app/components/organisms/ArticleCard.tsx'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { category } = params
@@ -28,6 +29,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export default function NewsCategoryPage() {
 	const { categoryTitle, filteredArticles } = useLoaderData<typeof loader>()
+	console.log({ filteredArticles })
 	return (
 		<>
 			<meta
@@ -39,15 +41,12 @@ export default function NewsCategoryPage() {
 				<h2 className="pb-6 text-h2">{categoryTitle}</h2>
 				<div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 ">
 					{filteredArticles.map(article => (
-						<div
-							className="display: flex; flex-direction: flex-col; line-clamp-6 flex h-40 flex-col justify-between rounded-lg
-							bg-green-600 p-4 transition
-								hover:scale-105 hover:bg-green-900"
+						<ArticleCard
 							key={article.id}
-						>
-							<h3>{article.title}</h3>
-							<p>{article.category?.name || 'General News'}</p>
-						</div>
+							id={article.id}
+							title={article.title}
+							category={article.category}
+						/>
 					))}
 				</div>
 			</div>

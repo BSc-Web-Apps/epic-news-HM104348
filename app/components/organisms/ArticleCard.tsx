@@ -1,24 +1,12 @@
-import {
-	type Key,
-	type ReactElement,
-	type JSXElementConstructor,
-	type ReactNode,
-	type ReactPortal,
-} from '#node_modules/@types/react'
+interface ArticleCardProps {
+	category: {
+		name: string
+	} | null
+	id: string
+	title: string
+}
 
-export default function ArticleCard(article: {
-	id: Key | null | undefined
-	title:
-		| string
-		| number
-		| boolean
-		| ReactElement<any, string | JSXElementConstructor<any>>
-		| Iterable<ReactNode>
-		| ReactPortal
-		| null
-		| undefined
-	category: { name: any }
-}) {
+export default function ArticleCard(article: ArticleCardProps) {
 	return (
 		<div>
 			<div
