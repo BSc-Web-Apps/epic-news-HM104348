@@ -8,7 +8,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 	invariant(typeof articleId === 'string', 'No article ID provided')
 
-	// Fetch the article by ID
 	const article = await prisma.article.findUnique({
 		where: { id: articleId },
 		select: {
