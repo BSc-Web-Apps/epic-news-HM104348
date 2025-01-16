@@ -12,6 +12,8 @@ export const meta: MetaFunction = () => [{ title: 'Epic News' }]
 
 export async function loader() {
 	const allArticles = await prisma.article.findMany({
+		where: { isPublished: true },
+
 		select: {
 			id: true,
 			title: true,
@@ -26,25 +28,6 @@ export default function Index() {
 	const { allArticles } = useLoaderData<typeof loader>()
 	return (
 		<main className="h-full">
-			<HeroCallToAction
-				image={heroImage}
-				imageRight={true}
-				hasBackgroundColour={true}
-			>
-				<div className="flex h-full flex-1 flex-col justify-between p-16">
-					<div className="flex flex-col gap-8">
-						<h2 className="text-h2">Welcome to Epic News</h2>
-						<p className="text-lg">
-							Keep up to date with the latest tech news.
-						</p>
-					</div>
-
-					<Button asChild variant="default" size="lg">
-						<Link to="/signup">Sign up</Link>
-					</Button>
-				</div>
-			</HeroCallToAction>
-
 			<ParallaxBackground
 				image={heroImage}
 				title="Epic News"
@@ -74,7 +57,7 @@ export default function Index() {
 						allArticles.map(article => (
 							<ArticleCard
 								key={article.id}
-								id={article.id}
+								articleId={article.id}
 								title={article.title}
 								category={article.category}
 							/>
@@ -84,10 +67,6 @@ export default function Index() {
 					)}
 				</div>
 			</div>
-
-			<button className="... bg-indigo-500 px-8 py-4 hover:bg-blue-400">
-				Learn More
-			</button>
 		</main>
 	)
 }
