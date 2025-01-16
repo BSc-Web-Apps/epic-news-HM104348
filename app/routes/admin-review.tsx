@@ -19,7 +19,7 @@ export function StatusPill({ isPublished }: StatusPillProps) {
 		<div
 			className={`rounded-full px-2 py-1 text-xs font-semibold ${isPublished ? 'bg-green-700 text-white' : 'bg-red-700 text-white'}`}
 		>
-			{isPublished ? 'P' : 'D'}
+			{isPublished ? 'Published' : 'Draft'}
 		</div>
 	)
 }
