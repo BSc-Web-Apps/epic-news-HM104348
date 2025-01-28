@@ -1,6 +1,5 @@
 import { type MetaFunction } from '@remix-run/node'
 import { json, Link, useLoaderData } from '@remix-run/react'
-import HeroCallToAction from '#app/components/organisms/Hero/HeroCallToAction.tsx'
 import ParallaxBackground from '#app/components/organisms/Hero/ParallaxBackground.tsx'
 import { Button } from '#app/components/ui/button.tsx'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
