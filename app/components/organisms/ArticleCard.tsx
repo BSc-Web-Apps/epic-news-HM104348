@@ -31,10 +31,9 @@ export default function ArticleCard({
 					>
 						<h3> {title}</h3>
 					</div>
-					<p>
-						{' '}
+					<div className="flex items-center gap-2">
 						<GiFallingLeaf size={20} /> {} {category?.name || 'General News'}{' '}
-					</p>
+					</div>
 				</div>
 			</div>
 		</Link>
