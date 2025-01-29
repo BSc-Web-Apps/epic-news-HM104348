@@ -8,12 +8,12 @@ const FooterLogoCentre = ({
 	altText = 'Our company logo',
 }: FooterProps) => {
 	return (
-		<footer className="bg-secondary lg:py-16 dark:bg-dark-secondary">
+		<footer className="dark:bg-dark-secondary bg-secondary lg:py-16">
 			<div className="container">
-				<div className="flex flex-col items-center justify-around border-b border-muted-foreground/75 lg:flex-row lg:pb-8 dark:border-dark-muted-foreground/75">
+				<div className="dark:border-dark-muted-foreground/75 flex flex-col items-center justify-around border-b border-muted-foreground/75 lg:flex-row lg:pb-8">
 					<div
-						className="flex flex-col items-start gap-6 py-8
-					font-bold text-secondary-foreground lg:flex-row dark:text-dark-secondary-foreground"
+						className="dark:text-dark-secondary-foreground flex flex-col items-start gap-6
+					py-8 font-bold text-secondary-foreground lg:flex-row"
 					>
 						<div>
 							<NavLink to="#">Nav Label</NavLink>
@@ -31,8 +31,8 @@ const FooterLogoCentre = ({
 					</Link>
 
 					<div
-						className="flex flex-col items-start gap-6 py-8
-					font-bold text-secondary-foreground lg:flex-row dark:text-dark-secondary-foreground"
+						className="dark:text-dark-secondary-foreground flex flex-col items-start gap-6
+					py-8 font-bold text-secondary-foreground lg:flex-row"
 					>
 						<div>
 							<NavLink to="#">Nav Label</NavLink>
@@ -51,7 +51,7 @@ const FooterLogoCentre = ({
 						<div className="mb-8 flex justify-center">
 							<SocialMediaButtons />
 						</div>
-						<div className="text-center text-secondary-foreground/75 dark:text-dark-secondary-foreground/75">
+						<div className="dark:text-dark-secondary-foreground/75 text-center text-secondary-foreground/75">
 							{companyName} | {new Date().getFullYear()}
 						</div>
 					</div>
